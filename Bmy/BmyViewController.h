@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BmyViewController : UIViewController
+@interface BmyViewController : UITableViewController
+
+@property (strong, nonatomic) NSDictionary *dictData;
+@property (strong, nonatomic) NSArray *listData;
+
 
 @end

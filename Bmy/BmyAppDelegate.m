@@ -8,12 +8,59 @@
 
 #import "BmyAppDelegate.h"
 
+#import "RevealController.h"
+#import "Top10ViewController.h"
+#import "BmyViewController.h"
+
 @implementation BmyAppDelegate
+
+@synthesize window = _window;
+@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    return YES;
+    //self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
+     //new
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *frontNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"NavTop10"];
+    UINavigationController *rearNavigationContorller = [storyboard instantiateViewControllerWithIdentifier:@"NavBmy"];
+	//BmyViewController *bmyViewController = [storyboard instantiateViewControllerWithIdentifier:@"BmyViewController"];
+    
+    NSLog(@"test");
+    if (!frontNavigationController) {
+        NSLog(@" navigationController == nil");
+    }
+    
+    
+    RevealController *revealController = [[RevealController alloc] initWithFrontViewController:frontNavigationController rearViewController:rearNavigationContorller];
+    revealController.currentTitle = @"十大";
+	self.viewController = revealController;
+    self.window.rootViewController = self.viewController;
+	[self.window makeKeyAndVisible];
+    
+    
+    /*
+    Top10ViewController *top10ViewController = [[Top10ViewController alloc] initWithStyle:UITableViewStylePlain];
+    BmyViewController *bmyViewController = [[BmyViewController alloc]initWithStyle:UITableViewStylePlain];
+    
+    //UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:top10ViewController];
+    UINavigationController *navigationController = self.window.rootViewController;
+    
+    RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:bmyViewController];
+	self.viewController = revealController;
+	
+	//[navigationController release];
+	//[frontViewController release];
+	//[rearViewController release];
+	//[revealController release];
+	
+	self.window.rootViewController = self.viewController;
+	[self.window makeKeyAndVisible];
+    */
+	return YES;
+
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

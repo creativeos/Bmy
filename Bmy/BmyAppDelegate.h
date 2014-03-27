@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class RevealController;
+
 @interface BmyAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (retain, nonatomic) UIWindow *window;
+@property (retain, nonatomic) RevealController *viewController;
 
 @end

@@ -1,0 +1,2 @@
+我关闭了 build  setting 里面的 automatic reference Counting
+我添加了 /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/usr/include/libxml2 在 header search path中
